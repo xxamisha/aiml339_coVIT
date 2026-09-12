@@ -113,7 +113,7 @@ class GPSA(nn.Module):
             # this head is "responsible" for the offset (h1 - center, h2 - center)
             self.pos_proj.weight.data[h, 0] = -1 * self.locality_strength * (h1 - center) * locality_distance
             self.pos_proj.weight.data[h, 1] = -1 * self.locality_strength * (h2 - center) * locality_distance
-            self.pos_proj.weight.data[h, 2] = self.locality_strength
+            self.pos_proj.weight.data[h, 2] = -1 * self.locality_strength
         self.pos_proj.bias.data.zero_()
 
     def _get_rel_indices(self, H, W, device):
